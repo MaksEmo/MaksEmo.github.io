@@ -5,37 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сеченов Максим</title>
     <style>
-                body {
+        .korea
+        {
+            font-style: italic;
+            font-size: 16px;
+        }
+        body 
+        {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0;
             padding: 0;
-            color: #333;
+            color: #000000;
             line-height: 1.6;
         }
-                h1 {
+        h1 
+        {
             font-size: 2.5rem;
-            color: #4a4a4a;
+            color: #000000;
             margin-bottom: 20px;
             font-weight: 600;
+        }
+
+        .works-list 
+        {
+            list-style: none;
+            padding: 0;
+        }
+        .works-list li 
+        {
+            margin: 15px 0;
+        }
+
+        .works-list a 
+        {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            transform: translateY(-5px);
+        }
+
+        .works-list a:hover {
+            background: linear-gradient(135deg, #5a6fd8, #6a3f91);
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
     <center>
     <h1>Страничка Сеченова Максима из группы ИС-3.2</h1>
-    <img style="width: 25%;" src="iAm.png">
+    <img src="iAm.png" style="border: 5px solid #3498db; border-radius: 10px; width: 25%">
     <br>
     <audio controls>
     <source src="music.mp3" type="audio/mpeg">
     </audio>
+    <br>
+    <h2 class="korea">
+        ♫ The Korea - Дорога Домой ♫
+    </h2>
     </center>
     
-
+        <center>
     <h2>Работы:</h2>
         <ul class="works-list">
             <li><a href="html_1.html">Работа 1: HTML</a></li>
             <li><a href="tables.html">Работа 2: Таблицы</a></li>
         </ul>
+        </center>
 </body>
 </html>
