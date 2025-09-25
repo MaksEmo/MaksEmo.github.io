@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/bootstrap.bundle.min.js" rel="stylesheet">
+    <title>DOM: Сеченов Максим</title>
+    <style>
+        button
+        {
+            size: 32px;
+            background-color: bisque;
+        }
+        body
+                {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(105deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            color: #000000;
+            line-height: 1.85;
+        }
+        p
+        {
+            font-size: 26px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <p id="hello">Доброго времени суток</p>
+    <button onclick="changeText()">Тыкни на меня</button>
+    <button id="hidden_button" onmouseover="showText()"></button>
+    <p id="happy"></p>
+    </center>
+
+    <script>
+        function changeText()
+        {
+            document.getElementById('hello').textContent="Как Ваши дела?"
+            document.getElementById('hidden_button').textContent="Наведи на меня"
+        }
+        function showText()
+        {
+            document.getElementById('happy').textContent="♪ Счастья и здоровья ♪"
+        }
+    </script>
+</body>
+</html>

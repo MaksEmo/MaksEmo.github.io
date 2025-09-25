@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТЕСТ</title>
+</head>
+<style>
+    .variant
+{
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.task
+{
+    text-align: justify;
+}
+
+</style>
+<body>
+     <h1>Тест по информатике</h1>
+    <table border="1" id="q1">
+        <tr>
+            <td rowspan="3">1</td>
+            <td colspan="4" class="task">
+                Автоматическое устройство осуществило перекодировку информационного сообщения на русском языке,
+                первоначально записанного в 16-битном коде Unicode, в 8-битную кодировку КОИ-8. При этом информационное
+                сообщение уменьшилось на 480 бит. Какова длина сообщения в символах?
+            </td>
+        </tr>
+        <tr>
+            <td class="variant">1) 30</td>
+            <td class="variant">2) 60</td>
+            <td class="variant">3) 120</td>
+            <td class="variant">4) 480</td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <input id="a1" type="text" class="answer" placeholder="Ответ" />
+            </td>
+        </tr>
+    </table>
+    <button onclick="Check()">Проверить</button>
+
+    <script>
+
+
+        function Check() {
+            let q1 = document.getElementById('q1');
+            let a1 = document.getElementById('a1');
+            if (a1.value == '1') {
+                q1.style.border = '1px solid green ';
+            }
+            else {
+                q1.style.border = '1px solid red';
+            }
+        }
+    </script>
+
+    <p>Разработчики:
+        не я
+    </p>
+
+</body>
+</html>
