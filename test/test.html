@@ -1,407 +1,478 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="js/bootstrap.bundle.min.js" rel="stylesheet">
-    <title>ТЕСТ</title>
-</head>
-<style>
-.variant
-{
-    text-align: center;
-    font-size: 20px;
-}
-
-
-.task
-{
-    text-align: justify;
-}
-body 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Тест по музыкальной теории</title>
+  <style>
+    body 
     {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0;
-            padding: 0;
-            color: #000000;
-            line-height: 1.85;
+      background: linear-gradient(135deg, #5e5ce6, #8a8aff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      margin: 0;
+      color: #fff;
+      line-height: 1.6;
     }
-  table 
-  {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    overflow: hidden;
-    transition: transform 0.2s ease;
-  }
-  h1 
-  {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  }
 
-</style>
+    h1 
+    {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .tables
+    {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    table 
+    {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    table:hover 
+    {
+      transform: scale(1.10);
+    }
+
+    .task 
+    {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    .variant 
+    {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .answer 
+    {
+      width: 80%;
+      padding: 8px;
+      margin: 10px auto;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    button 
+    {
+      display: block;
+      margin: 15px auto;
+      padding: 10px 20px;
+      background: #6c63ff;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover 
+    {
+      background: #5a52d5;
+      transform: scale(1.09);
+    }
+
+    button:active 
+    {
+      transform: scale(0.98);
+    }
+
+    table.correct 
+    {
+      border: 2px solid #4caf50;
+      background: rgba(76, 175, 79, 0.349);
+    }
+
+    table.incorrect 
+    {
+      border: 2px solid #f44336;
+      background: rgba(244, 67, 54, 0.315);
+    }
+
+    h2 
+    {
+      text-align: center;
+      margin-top: 30px;
+      color: #fff;
+    }
+
+    #attemptsCount 
+    {
+      font-size: 2em;
+      font-weight: bold;
+      color: #ffeb3b;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      margin-left: 10px;
+    }
+  </style>
+</head>
 <body>
-    <center>
-     <h1>Тест по музыкальной теории</h1>
-    <table border="1" id="q1">
-        <tr>
-            <td rowspan="3">1</td>
-            <td colspan="4" class="task">
-                Какой стандартный размер такта?
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) 8/8</td>
-            <td class="variant">2) 3/4</td>
-            <td class="variant">3) 16/24</td>
-            <td class="variant">4) 4/4</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a1" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+  <h1>Тест по музыкальной теории</h1>
+  <div class="tables">
+
+    <table id="q1">
+      <tr>
+        <td rowspan="3">1</td>
+        <td colspan="4" class="task">Какой стандартный размер такта?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) 8/8</td>
+        <td class="variant">2) 3/4</td>
+        <td class="variant">3) 16/24</td>
+        <td class="variant">4) 4/4</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a1" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ1()">Проверить</button>
-    <br>
 
-    <table border="1" id="q2">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Что означает термин "forte" в музыке?
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) Громко </td>
-            <td class="variant">2) Медленно </td>
-            <td class="variant">3) Тихо </td>
-            <td class="variant">4) Быстро </td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a2" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q2">
+      <tr>
+        <td rowspan="3">2</td>
+        <td colspan="4" class="task">Что означает термин "forte" в музыке?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Громко</td>
+        <td class="variant">2) Медленно</td>
+        <td class="variant">3) Тихо</td>
+        <td class="variant">4) Быстро</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a2" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ2()">Проверить</button>
 
-    <table border="1" id="q3">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Сколько полутонов в одной октаве?
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) 9</td>
-            <td class="variant">2) 11</td>
-            <td class="variant">3) 12</td>
-            <td class="variant">4) 8</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a3" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q3">
+      <tr>
+        <td rowspan="3">3</td>
+        <td colspan="4" class="task">Сколько полутонов в одной октаве?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) 9</td>
+        <td class="variant">2) 11</td>
+        <td class="variant">3) 12</td>
+        <td class="variant">4) 8</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a3" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ3()">Проверить</button>
 
-        <table border="1" id="q4">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Что такое арпеджио?
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) Пауза в музыке</td>
-            <td class="variant">2) Смена тона на определённую изначальную тональность</td>
-            <td class="variant">3) Поочередное проигрывание нот аккорда</td>
-            <td class="variant">4) Смена темпа</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a2" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q4">
+      <tr>
+        <td rowspan="3">4</td>
+        <td colspan="4" class="task">Что такое арпеджио?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Пауза в музыке</td>
+        <td class="variant">2) Смена тона на определённую изначальную тональность</td>
+        <td class="variant">3) Поочередное проигрывание нот аккорда</td>
+        <td class="variant">4) Смена темпа</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a4" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ4()">Проверить</button>
 
-        <table border="1" id="q5">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Как называется знак повышения тональности ноты?
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) Диез</td>
-            <td class="variant">2) Бемоль</td>
-            <td class="variant">3) Кванта</td>
-            <td class="variant">4) Терция</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a5" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q5">
+      <tr>
+        <td rowspan="3">5</td>
+        <td colspan="4" class="task">Как называется знак повышения тональности ноты?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Диез</td>
+        <td class="variant">2) Бемоль</td>
+        <td class="variant">3) Кванта</td>
+        <td class="variant">4) Терция</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a5" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ5()">Проверить</button>
 
-        <table border="1" id="q6">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Что такое модуляция?
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) Это повышение/понижение изначальной тональности всех нот в партитуре</td>
-            <td class="variant">2) Это изменение размер такта</td>
-            <td class="variant">3) Это окончание всей мелодии</td>
-            <td class="variant">4) Ничего не верно</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a6" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q6">
+      <tr>
+        <td rowspan="3">6</td>
+        <td colspan="4" class="task">Что такое модуляция?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Это повышение/понижение изначальной тональности всех нот в партитуре</td>
+        <td class="variant">2) Это изменение размер такта</td>
+        <td class="variant">3) Это окончание всей мелодии</td>
+        <td class="variant">4) Ничего не верно</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a6" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ6()">Проверить</button>
 
-        <table border="1" id="q7">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Каких интервалов НЕ существует: До-диез малая, секунда малая, терция большая, ля минор
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) До-диез малая, ля минор</td>
-            <td class="variant">2) Секунда малая, ля минор</td>
-            <td class="variant">3) Терция большая, до-диез малая</td>
-            <td class="variant">4) Секунда малая, терция большая</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a7" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q7">
+      <tr>
+        <td rowspan="3">7</td>
+        <td colspan="4" class="task">Каких интервалов НЕ существует: До-диез малая, секунда малая, терция большая, ля минор</td>
+      </tr>
+      <tr>
+        <td class="variant">1) До-диез малая, ля минор</td>
+        <td class="variant">2) Секунда малая, ля минор</td>
+        <td class="variant">3) Терция большая, до-диез малая</td>
+        <td class="variant">4) Секунда малая, терция большая</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a7" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ7()">Проверить</button>
 
-        <table border="1" id="q8">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Если размер ноты уменьшить, что произойдёт?
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) Её нужно будет сыграть с большей скоростью, и в такт добавить ещё одну ноту подобного размера</td>
-            <td class="variant">2) Её нужно будет сыграть с большей скоростью, и в такт не нужно добавлять ещё одну ноту подобного размера</td>
-            <td class="variant">3) Её нужно будет сыграть с меньшей скоростью, и в такт добавить ещё одну ноту подобного размера</td>
-            <td class="variant">4) Ничего не верно</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a8" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q8">
+      <tr>
+        <td rowspan="3">8</td>
+        <td colspan="4" class="task">Если размер ноты уменьшить, что произойдёт?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Её нужно будет сыграть с большей скоростью, и в такт добавить ещё одну ноту подобного размера</td>
+        <td class="variant">2) Её нужно будет сыграть с большей скоростью, и в такт не нужно добавлять ещё одну ноту подобного размера</td>
+        <td class="variant">3) Её нужно будет сыграть с меньшей скоростью, и в такт добавить ещё одну ноту подобного размера</td>
+        <td class="variant">4) Ничего не верно</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a8" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ8()">Проверить</button>
 
-        <table border="1" id="q9">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Если в партитуре написано piano piano piano - что это означает?
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) Играть данный отрывок партитуры нужно медленно</td>
-            <td class="variant">2) Из всех нот играть только одну</td>
-            <td class="variant">3) Ускориться в три раза</td>
-            <td class="variant">4) Играть очень тихо</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a9" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q9">
+      <tr>
+        <td rowspan="3">9</td>
+        <td colspan="4" class="task">Если в партитуре написано piano piano piano - что это означает?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Играть данный отрывок партитуры нужно медленно</td>
+        <td class="variant">2) Из всех нот играть только одну</td>
+        <td class="variant">3) Ускориться в три раза</td>
+        <td class="variant">4) Играть очень тихо</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a9" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ9()">Проверить</button>
 
-        <table border="1" id="q10">
-        <tr>
-            <td rowspan="3">2</td>
-            <td colspan="4" class="task">
-                Насколько октав ниже или выше басовый ключ, чем скрипичный
-            </td>
-        </tr>
-        <tr>
-            <td class="variant">1) На 1 ниже </td>
-            <td class="variant">2) На 2 выше</td>
-            <td class="variant">3) На 1 выше</td>
-            <td class="variant">4) Ничего не верно</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <input id="a10" type="text" class="answer" placeholder="Ответ" />
-            </td>
-        </tr>
+    <table id="q10">
+      <tr>
+        <td rowspan="3">10</td>
+        <td colspan="4" class="task">Насколько октав ниже или выше басовый ключ, чем скрипичный?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) На 1 ниже</td>
+        <td class="variant">2) На 2 выше</td>
+        <td class="variant">3) На 1 выше</td>
+        <td class="variant">4) Ничего не верно</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a10" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
     </table>
     <button onclick="CheckQ10()">Проверить</button>
-    <br>
-    <h2>Неправильных ответов:<p id="attemptsCount">0</p></h2>
-    </center>
 
-    <script>
-        let attemps = 0;
+    <h2>Неправильных ответов: <span id="attemptsCount">0</span></h2>
+  </div>
 
-        function CheckQ1() {
-            let q1 = document.getElementById('q1');
-            let a1 = document.getElementById('a1');
-            if (a1.value == '4') {
-                q1.style.border = '1px solid green ';
-            }
-            else {
-                q1.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+  <script>
+    let attempts = 0; 
 
-        function CheckQ2() {
-            let q2 = document.getElementById('q2');
-            let a2 = document.getElementById('a2');
-            if (a2.value == '1') {
-                q2.style.border = '1px solid green ';
-            }
-            else {
-                q2.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function updateAttemptsDisplay() {
+      document.getElementById('attemptsCount').textContent = attempts;
+    }
 
-        function CheckQ3() {
-            let q3 = document.getElementById('q3');
-            let a3 = document.getElementById('a3');
-            if (a3.value == '3') {
-                q3.style.border = '1px solid green ';
-            }
-            else {
-                q3.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function CheckQ1() {
+      let q1 = document.getElementById('q1');
+      let a1 = document.getElementById('a1');
+      if (a1.value == '4') {
+        q1.classList.add('correct');
+        q1.classList.remove('incorrect');
+      } else {
+        q1.classList.add('incorrect');
+        q1.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
 
-        function CheckQ4() {
-            let q4 = document.getElementById('q4');
-            let a4 = document.getElementById('a4');
-            if (a4.value == '3') {
-                q4.style.border = '1px solid green ';
-            }
-            else {
-                q4.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function CheckQ2() {
+      let q2 = document.getElementById('q2');
+      let a2 = document.getElementById('a2');
+      if (a2.value == '1') {
+        q2.classList.add('correct');
+        q2.classList.remove('incorrect');
+      } else {
+        q2.classList.add('incorrect');
+        q2.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
 
-        function CheckQ5() {
-            let q5 = document.getElementById('q5');
-            let a5 = document.getElementById('a5');
-            if (a5.value == '1') {
-                q5.style.border = '1px solid green ';
-            }
-            else {
-                q5.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function CheckQ3() {
+      let q3 = document.getElementById('q3');
+      let a3 = document.getElementById('a3');
+      if (a3.value == '3') {
+        q3.classList.add('correct');
+        q3.classList.remove('incorrect');
+      } else {
+        q3.classList.add('incorrect');
+        q3.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
 
-        function CheckQ6() {
-            let q6 = document.getElementById('q6');
-            let a6 = document.getElementById('a6');
-            if (a6.value == '1') {
-                q6.style.border = '1px solid green ';
-            }
-            else {
-                q6.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function CheckQ4() {
+      let q4 = document.getElementById('q4');
+      let a4 = document.getElementById('a4');
+      if (a4.value == '3') {
+        q4.classList.add('correct');
+        q4.classList.remove('incorrect');
+      } else {
+        q4.classList.add('incorrect');
+        q4.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
 
-        function CheckQ7() {
-            let q7 = document.getElementById('q7');
-            let a7 = document.getElementById('a7');
-            if (a7.value == '1') {
-                q7.style.border = '1px solid green ';
-            }
-            else {
-                q7.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function CheckQ5() {
+      let q5 = document.getElementById('q5');
+      let a5 = document.getElementById('a5');
+      if (a5.value == '1') {
+        q5.classList.add('correct');
+        q5.classList.remove('incorrect');
+      } else {
+        q5.classList.add('incorrect');
+        q5.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
 
-        function CheckQ8() {
-            let q8 = document.getElementById('q8');
-            let a8 = document.getElementById('a8');
-            if (a8.value == '1') {
-                q8.style.border = '1px solid green ';
-            }
-            else {
-                q8.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function CheckQ6() {
+      let q6 = document.getElementById('q6');
+      let a6 = document.getElementById('a6');
+      if (a6.value == '1') {
+        q6.classList.add('correct');
+        q6.classList.remove('incorrect');
+      } else {
+        q6.classList.add('incorrect');
+        q6.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
 
-        function CheckQ9() {
-            let q9 = document.getElementById('q9');
-            let a9 = document.getElementById('a9');
-            if (a9.value == '4') {
-                q9.style.border = '1px solid green ';
-            }
-            else {
-                q9.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function CheckQ7() {
+      let q7 = document.getElementById('q7');
+      let a7 = document.getElementById('a7');
+      if (a7.value == '1') {
+        q7.classList.add('correct');
+        q7.classList.remove('incorrect');
+      } else {
+        q7.classList.add('incorrect');
+        q7.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
 
-        function CheckQ10() {
-            let q10 = document.getElementById('q10');
-            let a10 = document.getElementById('a10');
-            if (a10.value == '1') {
-                q10.style.border = '1px solid green ';
-            }
-            else {
-                q10.style.border = '1px solid red';
-                attemps++;
-                obnovleniePopitok();
-            }
-        }
+    function CheckQ8() {
+      let q8 = document.getElementById('q8');
+      let a8 = document.getElementById('a8');
+      if (a8.value == '1') {
+        q8.classList.add('correct');
+        q8.classList.remove('incorrect');
+      } else {
+        q8.classList.add('incorrect');
+        q8.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
 
-        function obnovleniePopitok()
-            {
-                document.getElementById('attemptsCount').textContent = attemps;
-            }
-    </script>
+    function CheckQ9() {
+      let q9 = document.getElementById('q9');
+      let a9 = document.getElementById('a9');
+      if (a9.value == '4') {
+        q9.classList.add('correct');
+        q9.classList.remove('incorrect');
+      } else {
+        q9.classList.add('incorrect');
+        q9.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
+
+    function CheckQ10() {
+      let q10 = document.getElementById('q10');
+      let a10 = document.getElementById('a10');
+      if (a10.value == '1') {
+        q10.classList.add('correct');
+        q10.classList.remove('incorrect');
+      } else {
+        q10.classList.add('incorrect');
+        q10.classList.remove('correct');
+        attempts++;
+        updateAttemptsDisplay();
+      }
+    }
+  </script>
 </body>
 </html>
