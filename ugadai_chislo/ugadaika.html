@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/bootstrap.bundle.min.js" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Угадай число</title>
+</head>
+<body>
+    <h1>
+        <center>
+        <div class="igra">
+        <h1>Угадай число от 1 до 100</h1>
+        <p>Введите ваше предположение:</p>
+        <input type="number" id="guessInput" min="1" max="100" placeholder="1-100">
+        <br>
+        <button onclick="checkGuess()">Проверить</button>
+        <button onclick="newGame()">Новая игра</button>
+
+        <div id="message"></div>
+        <div id="attempts">Попыток: 0</div>
+        </div>
+        </center>
+    </h1>
+    <script src="ugadaika.js"></script>
+</body>
+</html>

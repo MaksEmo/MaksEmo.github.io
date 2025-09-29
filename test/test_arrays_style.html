@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Тест по музыкальной теории</title>
+  <link rel="stylesheet" href="style_test.css">
+</head>
+<body>
+  <h1>Тест по музыкальной теории</h1>
+  <div class="tables">
+
+    <table id="q1">
+      <tr>
+        <td rowspan="3">1</td>
+        <td colspan="4" class="task">Какой стандартный размер такта?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) 8/8</td>
+        <td class="variant">2) 3/4</td>
+        <td class="variant">3) 16/24</td>
+        <td class="variant">4) 4/4</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a1" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(1)">Проверить</button>
+
+    <table id="q2">
+      <tr>
+        <td rowspan="3">2</td>
+        <td colspan="4" class="task">Что означает термин "forte" в музыке?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Громко</td>
+        <td class="variant">2) Медленно</td>
+        <td class="variant">3) Тихо</td>
+        <td class="variant">4) Быстро</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a2" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(2)">Проверить</button>
+
+    <table id="q3">
+      <tr>
+        <td rowspan="3">3</td>
+        <td colspan="4" class="task">Сколько полутонов в одной октаве?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) 9</td>
+        <td class="variant">2) 11</td>
+        <td class="variant">3) 12</td>
+        <td class="variant">4) 8</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a3" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(3)">Проверить</button>
+
+    <table id="q4">
+      <tr>
+        <td rowspan="3">4</td>
+        <td colspan="4" class="task">Что такое арпеджио?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Пауза в музыке</td>
+        <td class="variant">2) Смена тона на определённую изначальную тональность</td>
+        <td class="variant">3) Поочередное проигрывание нот аккорда</td>
+        <td class="variant">4) Смена темпа</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a4" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(4)">Проверить</button>
+
+    <table id="q5">
+      <tr>
+        <td rowspan="3">5</td>
+        <td colspan="4" class="task">Как называется знак повышения тональности ноты?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Диез</td>
+        <td class="variant">2) Бемоль</td>
+        <td class="variant">3) Кванта</td>
+        <td class="variant">4) Терция</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a5" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(5)">Проверить</button>
+
+    <table id="q6">
+      <tr>
+        <td rowspan="3">6</td>
+        <td colspan="4" class="task">Что такое модуляция?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Это повышение/понижение изначальной тональности всех нот в партитуре</td>
+        <td class="variant">2) Это изменение размер такта</td>
+        <td class="variant">3) Это окончание всей мелодии</td>
+        <td class="variant">4) Ничего не верно</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a6" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(6)">Проверить</button>
+
+    <table id="q7">
+      <tr>
+        <td rowspan="3">7</td>
+        <td colspan="4" class="task">Каких интервалов НЕ существует: До-диез малая, секунда малая, терция большая, ля минор</td>
+      </tr>
+      <tr>
+        <td class="variant">1) До-диез малая, ля минор</td>
+        <td class="variant">2) Секунда малая, ля минор</td>
+        <td class="variant">3) Терция большая, до-диез малая</td>
+        <td class="variant">4) Секунда малая, терция большая</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a7" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(7)">Проверить</button>
+
+    <table id="q8">
+      <tr>
+        <td rowspan="3">8</td>
+        <td colspan="4" class="task">Если размер ноты уменьшить, что произойдёт?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Её нужно будет сыграть с большей скоростью, и в такт добавить ещё одну ноту подобного размера</td>
+        <td class="variant">2) Её нужно будет сыграть с большей скоростью, и в такт не нужно добавлять ещё одну ноту подобного размера</td>
+        <td class="variant">3) Её нужно будет сыграть с меньшей скоростью, и в такт добавить ещё одну ноту подобного размера</td>
+        <td class="variant">4) Ничего не верно</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a8" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(8)">Проверить</button>
+
+    <table id="q9">
+      <tr>
+        <td rowspan="3">9</td>
+        <td colspan="4" class="task">Если в партитуре написано piano piano piano - что это означает?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) Играть данный отрывок партитуры нужно медленно</td>
+        <td class="variant">2) Из всех нот играть только одну</td>
+        <td class="variant">3) Ускориться в три раза</td>
+        <td class="variant">4) Играть очень тихо</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a9" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(9)">Проверить</button>
+
+    <table id="q10">
+      <tr>
+        <td rowspan="3">10</td>
+        <td colspan="4" class="task">Насколько октав ниже или выше басовый ключ, чем скрипичный?</td>
+      </tr>
+      <tr>
+        <td class="variant">1) На 1 ниже</td>
+        <td class="variant">2) На 2 выше</td>
+        <td class="variant">3) На 1 выше</td>
+        <td class="variant">4) Ничего не верно</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input id="a10" type="text" class="answer" placeholder="Ответ" />
+        </td>
+      </tr>
+    </table>
+    <button onclick="Check(10)">Проверить</button>
+
+    <h2>Неправильных ответов: <span id="attemptsCount">0</span></h2>
+    <h2>Правильных ответов: <span id="scoreCount">0</span></h2>
+  </div>
+
+  <script src="script_test.js"></script>
+</body>
+</html>
