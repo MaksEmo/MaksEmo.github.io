@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Гистограмма + Массивы</title>
+    <script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/bootstrap.bundle.min.js" rel="stylesheet">
+    <style>
+        #canvas {
+            width: 700px;
+            height: 425px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas"></div>
+    <div>
+        <button onclick="Regenerate()">Генерация новых чисел</button>
+        <button onclick="showOriginal()">Исходные данные</button>
+        <button onclick="showFiltered50()">> 50</button>
+        <button onclick="showFiltered70()">> 70</button>
+        <button onclick="showEven()">Чётные</button>
+        <button onclick="show1050()">10-50</button>
+        <button onclick="showDiv5()">Кратные 5</button>
+    </div>
+    <script>
+        // 1. Генерируем массив из 10 случайных чисел от 1 до 100
+        let randomNumbers = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100) + 1);
+        console.log("Случайные числа:", randomNumbers);
+
+
+        // 2. Создаём холст для рисования
+        const paper = Raphael("canvas", 700, 425);
+        let bars = []; // Массив для хранения столбцов
+        let texts = [];
+        let textDiag = null;
+
+
+        // 3. Функция для очистки холста
+        function clearCanvas() {
+            bars.forEach(bar => bar.remove());
+            bars = [];
+            texts.forEach(text => text.remove());
+            texts = [];
+        }
+
+
+        // 4. Функция для отрисовки диаграммы
+        function drawBars(data, title) {
+            clearCanvas();
+            const barWidth = 40;
+            const gap = 20;
+            const maxBarHeight = 300;
+            if (textDiag != null) textDiag.remove();
+
+
+            // Подпись диаграммы
+            textDiag = paper.text(300, 380, title).attr({
+                "font-size": 14,
+                fill: "#333",
+            });
+
+
+
+
+            data.forEach((value, index) => {
+                const barHeight = (value / 100) * maxBarHeight;
+                const bar = paper.rect(
+                    index * (barWidth + gap) + 50,
+                    350 - barHeight,
+                    barWidth,
+                    barHeight
+                );
+                bar.attr({
+                    fill: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+                    stroke: "#333",
+                });
+                bars.push(bar);
+                // Подпись значения
+                text = paper.text(
+                    index * (barWidth + gap) + 70,
+                    340 - barHeight,
+                    value.toString()
+                ).attr({
+                    "font-size": 12,
+                    fill: "#333",
+                });
+                texts.push(text);
+            });
+        }
+
+
+        // 5. Функции для кнопок
+        function showOriginal() {
+            drawBars(randomNumbers, "Исходные данные");
+        }
+
+        function Regenerate()
+        {   
+            randomNumbers = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100) + 1);
+            console.log("Случайные числа:", randomNumbers);
+        }
+
+        function showFiltered50() {
+            const filtered = randomNumbers.filter(num => num > 50);
+            drawBars(filtered, "Числа > 50");
+        }
+
+
+        function showFiltered70() {
+            const filtered = randomNumbers.filter(num => num > 70);
+            drawBars(filtered, "Числа > 70");
+        }
+
+
+        function showEven() {
+            const even = randomNumbers.filter(num => num % 2 === 0);
+            drawBars(even, "Чётные числа");
+        }
+
+        function show1050()
+        {
+            const filtered = randomNumbers.filter(num => num > 10 && num < 50);
+            drawBars(filtered, "Числа больше 10 и меньше 50");
+        }
+
+        function showDiv5()
+        {
+            const div = randomNumbers.filter(num => num % 5 === 0);
+            drawBars(div, "Числа <= 90")
+        }
+    
+        // 6. По умолчанию показываем исходные данные
+        showOriginal();
+    </script>
+</body>
+</html>

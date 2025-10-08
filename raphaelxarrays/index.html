@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/bootstrap.bundle.min.js" rel="stylesheet">
+    <title>Raphael. Sechenov Maxim</title>
+    <script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
+<style>
+        #canvas 
+        {
+            width: 1880px;
+            height: 930px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas"></div>
+
+    <script>
+        // Создаём холст для рисования
+        const paper = Raphael("canvas", 1880, 930);
+
+        // Рисуем круг с центром в (100, 100) и радиусом 50
+        const circle = paper.circle(940, 465, 100);
+
+        const rect = paper.rect(940, 340, 250, 250)
+
+        // Задаём цвет заливки и обводки
+        circle.attr({
+            fill: "#0f458f",
+            stroke: "#333",
+            "stroke-width": 3,
+        });
+
+        rect.attr({
+            fill: "#481250",
+            stroke: "#350",
+            "stroke-width": 3,
+        })
+
+        // Анимация: увеличение круга
+        circle.node.onclick = function() 
+        {
+        alert("Прикольно")
+        circle.animate({
+            r: 120, // Новый радиус
+            fill: "#2b326b", // Меняем цвет
+        }, 800); // Длительность анимации
+        }
+
+                // Анимация: мена цвета квадрата
+        rect.node.onclick = function() 
+        {
+        alert("Круто")
+        rect.animate({
+            fill: "#1250ab", // Меняем цвет
+        }, 500); // Длительность анимации 
+        }
+
+    </script>
+</body>
+</html>
