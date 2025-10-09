@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael, Сеченов Максим</title>
+    <script src="https://cdn.jsdelivr.net/npm/raphael@2.3.0/raphael.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="js/bootstrap.bundle.min.js" rel="stylesheet">
+    <style>
+        #canvas 
+        {
+            width: 700px;
+            height: 425px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas"></div>
+    <script>
+        var paper = Raphael("canvas", 400, 400); // предполагается, что есть <div id="canvas"></div>
+
+// Голова
+var head = paper.circle(200, 200, 100);
+head.attr({fill: "#ff5e3b", stroke: "#000", "stroke-width": 2});
+let smileflag = true;
+
+head.node.onclick = () =>
+{
+    smileflag=!smileflag;
+    console.log(smileflag);
+    if (!smileflag) {
+        // var smile = paper.path("M150,240 Q170,280 250,240");
+        head.animate({fill: "#bbae3b", stroke: "#000", "stroke-width": 2}, 600)
+        smile.animate({stroke: "#000", "stroke-width": 3, path:"M150,240 Q170,280 250,240"}, 600);
+    }
+    else {
+        // var smile = paper.path("M150,240 Q185,210 250,240");
+        head.animate({fill: "#ff5e3b", stroke: "#000", "stroke-width": 2}, 600);
+        smile.animate({stroke: "#000", "stroke-width": 3, path:"M150,240 Q170,210 250,240"}, 600);
+    }
+}
+
+// Глаза
+var eye1 = paper.circle(160, 180, 15);
+var eye2 = paper.circle(240, 180, 15);
+eye1.attr({fill: "#000"});
+eye2.attr({fill: "#000"});
+
+// Улыбка (используем путь)
+var smile = paper.path("M150,240 Q170,280 250,240")
+    </script>
+</body>
+</html>
