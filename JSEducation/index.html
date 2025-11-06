@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Методичка</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="header">
+    <h1>📘 JavaScript Методичка</h1>
+  </div>
+
+  <div class="container">
+    <div class="main-area">
+      <div class="panel">
+        <div class="panel-title">📝 Ваш код (JavaScript)</div>
+        <textarea class="editor" id="code-editor" placeholder="Введите код"></textarea>
+        <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <button class="btn" id="run-btn">▶️ Выполнить</button>
+          <button class="btn" id="help-btn">📘 Справочник</button>
+          <button class="btn" id="reset-progress-btn">🔄 Сбросить прогресс</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">💻 Терминал</div>
+        <div class="terminal" id="terminal">> Готов к выполнению...</div>
+        <div id="feedback"></div>
+      </div>
+    </div>
+
+    <div class="side-area">
+      <div class="panel task">
+        <div class="panel-title">📌 Задание <span id="level-num">1</span>/15</div>
+        <div class="task-content" id="task-text"></div>
+        
+        <div style="margin-top: 16px; display: flex; justify-content: space-between;">
+          <button class="btn" id="prev-btn" disabled>← Назад</button>
+          <button class="btn" id="next-btn" disabled>Вперёд →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Справочник -->
+  <div class="modal" id="reference-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📘 Справочник по JavaScript</h2>
+        <button class="close-btn" id="close-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="reference-content"></div>
+    </div>
+  </div>
+
+  <script src="tasks.js"></script>
+  <script src="code_checker.js"></script>
+  <script src="manual.js"></script>
+</body>
+</html>
