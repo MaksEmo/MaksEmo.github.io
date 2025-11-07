@@ -34,6 +34,9 @@ window.tasks = [
       if (!/console\.log\s*\(/.test(code)) {
         return "Используйте console.log() для вывода.";
       }
+      if (!/console\.log\s*\(/.test(code)) {
+        return "Используйте console.log() для вывода.";
+      }
       let logged = null;
       const originalLog = console.log;
       console.log = function (...args) {
@@ -45,6 +48,185 @@ window.tasks = [
       } catch (e) {
         return "Ошибка: " + e.message;
       } finally {
+        console.log = originalLog;
+      }
+    }
+  },
+
+  {
+    title: "Изменение переменной",
+    description: `Создайте переменную counter = 0.\nУвеличьте её на 1 двумя способами:\n1. counter = counter + 1;\n2. counter += 1;\nВыведите результат.`,
+    check: (code) => {
+      if (!/counter\s*=\s*0/.test(code)) return "Объявите counter = 0";
+      if (!/counter\s*=\s*counter\s*\+\s*1/.test(code) && !/counter\s*\+=\s*1/.test(code)) {
+        return "Используйте один из способов увеличения: counter = counter + 1 или counter += 1";
+      }
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "1" ? true : "Результат должен быть 1";
+      } finally { console.log = originalLog; }
+    }
+  },
+
+  {
+    title: "Константы",
+    description: `Объявите константу GRAVITY = 9.81.\nВыведите: "Ускорение свободного падения: 9.81 м/с²"`,
+    check: (code) => {
+      if (!/\bconst\s+GRAVITY\s*=\s*9\.81\b/.test(code)) {
+        return "Объявите const GRAVITY = 9.81";
+      }
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "Ускорение свободного падения: 9.81 м/с²" ? true : "Неверный текст";
+      } finally { console.log = originalLog; }
+    }
+  },
+
+    {
+      title: "Проверка типов",
+      description: `Создайте:\n- строку: text = "100"\n- число: num = 100\nВыведите типы через typeof: typeof text и typeof num`,
+      check: (code) => {
+        if (!/text\s*=\s*["']100["']/.test(code)) return "Объявите text = \"100\"";
+        if (!/num\s*=\s*100\b/.test(code)) return "Объявите num = 100";
+        if (!/typeof\s+text/.test(code) || !/typeof\s+num/.test(code)) {
+          return "Используйте typeof text и typeof num";
+        }
+        let logs = [];
+        const originalLog = console.log;
+        console.log = function (...args) { logs.push(args.map(String).join(' ')); };
+        try {
+          new Function(code)();
+          return logs.includes("string") && logs.includes("number") ? true : "Должны быть 'string' и 'number'";
+        } finally { console.log = originalLog; }
+      }
+  },
+
+  {
+    title: "Арифметика",
+    description: `Вычислите:\n- сумму: 15 + 7\n- разность: 20 - 8\n- произведение: 6 * 4\n- частное: 25 / 5\nВыведите все результаты,\nпри помощи console.log без создания переменных`,
+    check: (code) => {
+      if (!/console\.log\s*\([^)]*15\s*\+\s*7/.test(code)) return "Выведите 15 + 7";
+      if (!/console\.log\s*\([^)]*20\s*-\s*8/.test(code)) return "Выведите 20 - 8";
+      if (!/console\.log\s*\([^)]*6\s*\*\s*4/.test(code)) return "Выведите 6 * 4";
+      if (!/console\.log\s*\([^)]*25\s*\/\s*5/.test(code)) return "Выведите 25 / 5";
+      let logs = [];
+      const originalLog = console.log;
+      console.log = function (...args) { logs.push(args.map(String).join(' ')); };
+      try {
+        new Function(code)();
+        const expected = ["22", "12", "24", "5"];
+        return JSON.stringify(logs) === JSON.stringify(expected) ? true : "Неверные вычисления";
+      } finally { console.log = originalLog; }
+    }
+  },
+
+  {
+    title: "Остаток от деления",
+    description: `Найдите остаток от деления 17 на 5 с помощью %.\nВыведите результат.`,
+    check: (code) => {
+      if (!/17\s*%\s*5/.test(code)) return "Используйте 17 % 5";
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "2" ? true : "Остаток от 17 / 5 = 2";
+      } finally { console.log = originalLog; }
+    }
+  },
+
+  {
+    title: "Приоритет операций",
+    description: `Вычислите: 3 + 5 * 2 - 4 / 2\nСначала без скобок, затем с явными скобками: 3 + (5 * 2) - (4 / 2)\nУбедитесь, что результат одинаковый — 11.`,
+    check: (code) => {
+      if (!/3\s*\+\s*5\s*\*\s*2\s*-\s*4\s*\/\s*2/.test(code)) {
+        return "Вычислите выражение без скобок";
+      }
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "11" ? true : "Результат должен быть 11";
+      } finally { console.log = originalLog; }
+    }
+  },
+
+  // Задание 5.1: Ввод имени
+  {
+    title: "Ввод имени",
+    description: `Запросите имя с помощью prompt("Как вас зовут?").\nВыведите: "Привет, [имя]!"`,
+    check: (code) => {
+      if (!/prompt\s*\(\s*["']Как вас зовут\?["']\s*\)/.test(code)) {
+        return "Используйте prompt(\"Как вас зовут?\")";
+      }
+      if (!/console\.log\s*\([^)]*\+\s*name/.test(code)) {
+        return "Выведите приветствие с именем / введите текст в соответствием условия задания";
+      }
+      // Эмулируем ввод
+      const originalPrompt = window.prompt;
+      window.prompt = () => "Алекс";
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "Привет, Алекс!" ? true : "Формат: \"Привет, [имя]!\"";
+      } finally {
+        window.prompt = originalPrompt;
+        console.log = originalLog;
+      }
+    }
+  },
+
+  // Задание 5.2: Ввод числа и арифметика
+  {
+    title: "Возраст через 10 лет",
+    description: `Запросите текущий возраст через prompt.\nПреобразуйте в число с помощью Number() или +.\nВыведите: "Через 10 лет вам будет [возраст+10]"`,
+    check: (code) => {
+      if (!/prompt/.test(code)) return "Используйте prompt()";
+      if (!/Number\s*\(|\+\s*age/.test(code)) return "Преобразуйте строку в число";
+      const originalPrompt = window.prompt;
+      window.prompt = () => "25";
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "Через 10 лет вам будет 35" ? true : "Неверный расчёт";
+      } finally {
+        window.prompt = originalPrompt;
+        console.log = originalLog;
+      }
+    }
+  },
+
+  // Задание 5.3: Два числа
+  {
+    title: "Сумма двух чисел",
+    description: `Запросите два числа через prompt.\nВыведите их сумму.`,
+    check: (code) => {
+      if (!/prompt.*prompt/.test(code.replace(/\s/g, ''))) {
+        return "Запросите два числа";
+      }
+      if (!/\+/.test(code)) return "Используйте + для сложения";
+      const originalPrompt = window.prompt;
+      let callCount = 0;
+      window.prompt = () => (callCount++ === 0) ? "12" : "8";
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "20" ? true : "12 + 8 = 20";
+      } finally {
+        window.prompt = originalPrompt;
         console.log = originalLog;
       }
     }
@@ -77,6 +259,26 @@ window.tasks = [
   },
 
   {
+    title: "Чётное или нечётное",
+    description: `Запросите число. Проверьте, чётное ли оно (остаток от деления на 2 === 0).\nВыведите "Чётное" или "Нечётное".`,
+    check: (code) => {
+      if (!/%\s*2/.test(code)) return "Используйте % 2 для проверки";
+      const originalPrompt = window.prompt;
+      window.prompt = () => "7";
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "Нечётное" ? true : '7 — нечётное';
+      } finally {
+        window.prompt = originalPrompt;
+        console.log = originalLog;
+      }
+    }
+  },
+
+  {
     title: "Цикл for",
     description: `Выведите числа от 1 до 5 с помощью цикла for.`,
     check: (code) => {
@@ -95,6 +297,26 @@ window.tasks = [
       } catch (e) {
         return "Ошибка: " + e.message;
       } finally {
+        console.log = originalLog;
+      }
+    }
+  },
+
+  {
+    title: "Сумма от 1 до N",
+    description: `Запросите число N. Найдите сумму чисел от 1 до N с помощью цикла for.`,
+    check: (code) => {
+      if (!/\bfor\b/.test(code)) return "Используйте цикл for";
+      const originalPrompt = window.prompt;
+      window.prompt = () => "4";
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "10" ? true : "1+2+3+4 = 10";
+      } finally {
+        window.prompt = originalPrompt;
         console.log = originalLog;
       }
     }
@@ -127,6 +349,22 @@ window.tasks = [
   },
 
   {
+    title: "Среднее трёх чисел",
+    description: `Напишите функцию avg(a, b, c), возвращающую (a + b + c) / 3.\nВызовите её с аргументами 3, 6, 9 и выведите результат.`,
+    check: (code) => {
+      if (!/\bfunction\s+avg\b/.test(code)) return "Объявите функцию avg";
+      if (!/avg\s*\(\s*3\s*,\s*6\s*,\s*9\s*\)/.test(code)) return "Вызовите avg(3, 6, 9)";
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "6" ? true : "(3+6+9)/3 = 6";
+      } finally { console.log = originalLog; }
+    }
+  },
+
+  {
     title: "Массивы",
     description: `Создайте массив colors = ["красный", "зелёный", "синий"].\nВыведите второй элемент.`,
     check: (code) => {
@@ -149,6 +387,22 @@ window.tasks = [
       } finally {
         console.log = originalLog;
       }
+    }
+  },
+
+  {
+    title: "Поиск в массиве",
+    description: `Создайте массив: numbers = [10, 20, 30, 40].\nИспользуйте цикл, чтобы найти число 30 и вывести его индекс.`,
+    check: (code) => {
+      if (!/\[10,\s*20,\s*30,\s*40\]/.test(code)) return "Создайте массив [10, 20, 30, 40]";
+      if (!/\bfor\b|\bwhile\b/.test(code)) return "Используйте цикл для поиска";
+      let logged = null;
+      const originalLog = console.log;
+      console.log = function (...args) { logged = args.map(String).join(' '); };
+      try {
+        new Function(code)();
+        return logged === "2" ? true : "30 находится под индексом 2";
+      } finally { console.log = originalLog; }
     }
   },
 
